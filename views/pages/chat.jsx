@@ -14,14 +14,17 @@ class Chat extends React.Component {
                         <span className=''></span>
                     </div>
                 </div>
-                <div className='bg'></div>
-                <form className='chat' action='insert' method='post'>
+                <div className='bg'>
+                    <div className="date">
+                        <div className="title">Message Chat</div>
+                    </div>
+                    <div className="message_zoom"></div>
+                </div>
+                <div className='chat'>
                     <div className='bar'>
                         <h3 className='people'>氏名:</h3>
                         <input className='file' type='file' multiple />
-                        <input name="name" className='file noneName' />
-                        <input name="img" className='file noneImg' />
-                        <input className='textInput' type='text' name="text" />
+                        <input className='textInput' type='text' />
                         <button className='submitBtn'>送信</button>
                         <i className='i'>
                             <i className="fa fa-picture-o"></i>
@@ -31,8 +34,9 @@ class Chat extends React.Component {
                     <div className="footer">
                         <div className="owner"></div>
                     </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                     <script src="/scripts/chat.js"></script>
-                </form>
+                </div>
             </div>
         )
     }

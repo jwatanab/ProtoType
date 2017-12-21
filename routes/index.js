@@ -1,12 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 /* GET home page. */
 router.get('/', (req, res) => {
   res.render('pages/flont')
 })
 
+<<<<<<< HEAD
 router.get('/comfirm', (req, res) => {
+=======
+router.get('/confirm', (req, res) => {
+>>>>>>> cf4a3bd7c45d1ef6720776297172d95e21d660f1
   res.render('pages/comfirm')
 })
 
@@ -16,11 +20,6 @@ router.get('/prompt', (req, res) => {
 
 router.get('/chat', (req, res) => {
   res.render('pages/chat')
-})
-
-router.post('/insert', (req, res) => {
-  console.log(req.body)
-  res.redirect('/')
 })
 
 module.exports = router;
