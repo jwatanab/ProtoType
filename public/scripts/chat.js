@@ -3,7 +3,25 @@ const that = this
 that.onload = () => {
     const document = that.document
     const MainParent = document.getElementsByClassName('chat')[0]
-    let Obj = { name: '', text: '', img: '' }
+    const bg = document.getElementsByClassName('bg')[0]
+    let Obj = { name: '', text: '', img: null }
+
+    const showReq = that.indexedDB.open('prototype')
+    showReq.onsuccess = (e) => {
+        const db = e.target.result
+        const request = db.transaction('message')
+            .objectStore('message')
+            .getAll()
+        request.onsuccess = (e) => {
+            console.log(e.target.result)
+            for (let i in e.target.result) {
+                let doc = document.createElement('p')
+                doc.className = 'message'
+                doc.innerHTML = e.target.result[i].name + e.target.result[i].text + e.target.result[i].time
+                bg.appendChild(doc)
+            }
+        }
+    }
 
     MainParent.querySelector('.bar')
         .addEventListener('click', formClick, false)
@@ -34,7 +52,7 @@ that.onload = () => {
         valueInput(name)
     }
     function valueInput(e) {
-        if (e.indexOf('blob:') === 0) {
+        if (typeof e === 'object') {
             Obj.img = e
             return
         } else if (e.indexOf('氏名:') === 0) {
@@ -42,7 +60,7 @@ that.onload = () => {
             return
         }
         else if (e === "完了しました^-^") {
-            if (Obj.img === '' && Obj.text === '') return
+            if (Obj.img === null && Obj.text === '') return
             return Obj
         }
         else {
@@ -60,15 +78,15 @@ that.onload = () => {
             console.log('再度クリックしてください')
             return
         }
-        const fr = new FileReader()
+        const fr = new FileReader();
         fr.onload = () => {
             const u8 = new Uint8Array(fr.result)
-            const blob = new Blob([u8], { type: "image/jpeg" })
-            const url = URL.createObjectURL(blob)
-            valueInput(url)
+            const blob = new Blob([u8], { type: "image/jpeg" });
+            valueInput(blob)
         }
         fr.readAsArrayBuffer(file)
     }
+
     function doStringChange(e) {
         if (e.target.value) {
             valueInput(e.target.value)
@@ -80,8 +98,24 @@ that.onload = () => {
             return false
             return e.preventDefault()
         }
-        e.target.parentElement.querySelector('.noneName').value = chackValue.name
-        e.target.parentElement.querySelector('.noneImg').value = chackValue.img
+        e.target.parentElement.querySelector('input[type="text"]').value = ''
+        const req = that.indexedDB.open('prototype')
+        req.onsuccess = (e) => {
+            const dt = new Date()
+            const h = dt.getHours()
+            let m = dt.getMinutes()
+            if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
+            const timestamp = h + ':' + m
+            const result = e.target.result
+            const request = result.transaction(['message'], 'readwrite')
+                .objectStore('message')
+                .add({ name: chackValue.name, text: chackValue.text, img: chackValue.img, time: timestamp })
+            request.onsuccess = () => {
+                console.log('success')
+                Obj.text = ''
+                Obj.img = null
+            }
+        }
     }
 }
 

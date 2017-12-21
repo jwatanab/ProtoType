@@ -6,13 +6,6 @@ class Chat extends React.Component {
     constructor(props) {
         super(props)
     }
-    submitHandler(event) {
-        event.preventDefault()
-    }
-    odo(e) {
-        console.log('っきうた')
-        console.log(e)
-    }
     render() {
         return (
             <div>
@@ -23,13 +16,11 @@ class Chat extends React.Component {
                     </div>
                 </div>
                 <div className='bg'></div>
-                <form className='chat' action='insert' method='post'>
+                <div className='chat'>
                     <div className='bar'>
                         <h3 className='people'>氏名:</h3>
                         <input className='file' type='file' multiple />
-                        <input name="name" className='file noneName' />
-                        <input name="img" className='file noneImg' />
-                        <input className='textInput' type='text' name="text" />
+                        <input className='textInput' type='text' />
                         <button className='submitBtn'>送信</button>
                         <i className='i'>
                             <i className="fa fa-picture-o"></i>
@@ -40,7 +31,7 @@ class Chat extends React.Component {
                         <div className="owner"></div>
                     </div>
                     <script src="/scripts/chat.js"></script>
-                </form>
+                </div>
             </div>
         )
     }
