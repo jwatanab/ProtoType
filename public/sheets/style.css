@@ -144,14 +144,53 @@ body {
 }
 .bg {
     width: 850px;
-    display: block;     
+    padding-bottom: 270px;
+    height: auto;
     background-color: rgba(97, 97, 97, 0.301);
     margin: 70px auto 0;
     box-shadow: 0px 0px 6px 1px #151515;
     border-radius: 6px;
 }
 .bg .message{
-    text-align: left;
-    font-size: 1.8em;
-    padding: 24px
+  position: relative;
+  padding: 30px;
+  font-size: 15px;
+}
+
+.bg .message .name,
+  .text,
+  .img,
+  .time {
+  position: absolute;
+}
+
+.bg .message .text {
+  margin: 24px;
+}
+.bg .message .time {
+  margin: 5px 0 0 75px;
+  font-size: 10px;
+}
+
+.bg .message .mainimg {
+  display: inline-block;
+  margin: 40px 70px 570px;
+  max-width: 250px;
+  max-height: 250px;
+  /* JSで自身の高さを測る */
+}
+
+.bg .date {
+  line-height: 45px;
+  background-color: rgba(97, 97, 97, 0.301);
+}
+
+.bg .date .title {
+  font-size: 18px;
+  text-align: center;
+  color: rgba(211, 211, 211, 0.9);
+  font-weight: 100;
+  width: 170px;
+  background-color: rgb(97, 97, 97);
+  border-radius: 6px 0 0 0;
 }

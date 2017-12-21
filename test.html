@@ -1,0 +1,140 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bg {
+            width: 850px;
+            height: 580px;
+            display: block;
+            background-color: rgba(97, 97, 97, 0.301);
+            margin: 70px auto 0;
+            box-shadow: 0px 0px 6px 1px #151515;
+            border-radius: 6px;
+        }
+
+        .message {
+            position: relative;
+            padding: 30px;
+            font-size: 15px;
+        }
+
+        .message .name,
+        .text,
+        .img,
+        .time {
+            position: absolute;
+        }
+
+        .message .text {
+            margin: 24px;
+        }
+
+        .message .time {
+            margin: 5px 0 0 75px;
+            font-size: 10px;
+        }
+
+        .message .mainimg {
+            display: inline-block;
+            margin: 40px 70px 570px;
+            max-width: 250px;
+            max-height: 250px;
+            /* JSで自身の高さを測る */
+        }
+
+        .bg .date {
+            line-height: 45px;
+            background-color: rgba(97, 97, 97, 0.301);
+        }
+
+        .bg .date .title {
+            font-size: 18px;
+            text-align: center;
+            color: rgba(211, 211, 211, 0.9);
+            font-weight: 100;
+            width: 170px;
+            background-color: rgb(97, 97, 97);
+            border-radius: 6px 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='bg'>
+        <div class="date">
+            <div class="title">Message Chat</div>
+        </div>
+        <div class="message_zoom">
+            <div class='message'>
+                <div class="name">渡邊 純名</div>
+                <div class="text">おはようございます</div>
+                <div class="img"></div>
+                <div class="time">15:42</div>
+            </div>
+            <div class='message'>
+                <div class="name">渡邊 純名</div>
+                <div class="text">おはようございます</div>
+                <div class="img"></div>
+                <div class="time">15:42</div>
+            </div>
+            <div class='message'>
+                <div class="name">渡邊 純名</div>
+                <div class="text"></div>
+                <div class="img">
+                    <img class="mainimg" src="black-white-kid-portrait-minoura.jpg" alt="">
+                </div>
+                <div class="time">15:42</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let dom = new Array()
+    for (let j in obj) {
+        if (!obj.img) {
+            /* obj.length */
+            for (let i = 0; i < 4; i++) {
+                dom[i] = document.createElement('div')
+            }
+            dom[0].className = 'message'
+            dom[1].className = 'name'
+            dom[2].className = 'text'
+            dom[3].className = 'time'
+            dom[1].innerHTML = obj.name
+            dom[2].innerHTML = obj.text
+            /*  Image処理  */
+            dom[3].innerHTML = obj.time
+            dom[0].appendChild(dom[1])
+            dom[0].appendChild(dom[2])
+            dom[0].appendChild(dom[3])
+        } else {
+            for (let i = 0; i < 5; i++) {
+                dom[i] = document.createElement('div')
+            }
+            dom[0].className = 'message'
+            dom[1].className = 'name'
+            dom[2].className = 'text'
+            dom[3].className = 'img'
+            dom[4].className = 'time'
+
+            dom[1].innerHTML = obj.name
+            dom[2].innerHTML = obj.text
+            /*  Image処理  */
+            dom[4].innerHTML = obj.time
+            dom[0].appendChild(dom[1])
+            dom[0].appendChild(dom[2])
+            dom[0].appendChild(dom[3])
+            dom[0].appendChild(dom[4])
+        }
+        console.log(dom)
+        bg.appendChild(dom)
+    }
+        }
+</script>
+
+</html>

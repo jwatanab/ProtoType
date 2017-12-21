@@ -3,23 +3,47 @@ const that = this
 that.onload = () => {
     const document = that.document
     const MainParent = document.getElementsByClassName('chat')[0]
-    const bg = document.getElementsByClassName('bg')[0]
+    const $bg = $('.message_zoom')[0]
     let Obj = { name: '', text: '', img: null }
 
+    /*  Reset  */
+    //that.indexedDB.deleteDatabase('prototype')
+
     const showReq = that.indexedDB.open('prototype')
+    showReq.onupgradeneeded = (e) => {
+        const db = e.target.result
+        console.log('start')
+        db.createObjectStore('message', { keyPath: 'idStr', autoIncrement: true })
+        db.createObjectStore('shift', { keyPath: 'idStr', autoIncrement: true })
+    }
     showReq.onsuccess = (e) => {
         const db = e.target.result
         const request = db.transaction('message')
             .objectStore('message')
             .getAll()
         request.onsuccess = (e) => {
-            console.log(e.target.result)
-            for (let i in e.target.result) {
-                let doc = document.createElement('p')
-                doc.className = 'message'
-                doc.innerHTML = e.target.result[i].name + e.target.result[i].text + e.target.result[i].time
-                bg.appendChild(doc)
+            const obj = e.target.result
+            let details = new String()
+            for (let j in obj) {
+                if (!obj[j].img) {
+                    details += '<div class="message">' +
+                        '<div class="name">' + obj[j].name + '</div>' +
+                        '<div class="text"> ' + obj[j].text + '</div>' +
+                        '<div class="time">' + obj[j].time + '</div>' +
+                        '</div>'
+
+                } else {
+                    let url = URL.createObjectURL(obj[j].img);
+                    details += '<div class="message">' +
+                        '<div class="name">' + obj[j].name + '</div>' +
+                        '<div class="text"> ' + obj[j].text + '</div>' +
+                        '<div class="img"><img class="mainimg" src="' + url + '"/></div>' +
+                        '<div class="time">' + obj[j].time + '</div>' +
+                        '</div>'
+
+                }
             }
+            $bg.innerHTML = details
         }
     }
 

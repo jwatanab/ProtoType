@@ -15,7 +15,12 @@ class Chat extends React.Component {
                         <span className=''></span>
                     </div>
                 </div>
-                <div className='bg'></div>
+                <div className='bg'>
+                    <div className="date">
+                        <div className="title">Message Chat</div>
+                    </div>
+                    <div className="message_zoom"></div>
+                </div>
                 <div className='chat'>
                     <div className='bar'>
                         <h3 className='people'>氏名:</h3>
@@ -30,6 +35,7 @@ class Chat extends React.Component {
                     <div className="footer">
                         <div className="owner"></div>
                     </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                     <script src="/scripts/chat.js"></script>
                 </div>
             </div>
