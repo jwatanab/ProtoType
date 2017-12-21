@@ -1,6 +1,8 @@
 /*  init  */
 
 html {
+  padding: 0;
+  margin: 0;
   font-size: 72.5%;
 }
 
@@ -33,11 +35,16 @@ h3 {
 }
 
 body {
-  padding: 30px;
+  padding: 0;
+  margin: 0;
   font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic'
 }
 
 /*  Container  */
+
+.container{
+  padding: 30px;
+}
 
 .container .header .left {
   text-align: left;
@@ -144,12 +151,25 @@ body {
 }
 .bg {
     width: 850px;
-    padding-bottom: 270px;
+    padding-bottom: 50px;
     height: auto;
     background-color: rgba(97, 97, 97, 0.301);
     margin: 70px auto 0;
     box-shadow: 0px 0px 6px 1px #151515;
     border-radius: 6px;
+}
+
+.bg .show_date{
+  background-color: rgba(62,52,52,0.4);
+  display: block;
+  text-align: center;
+  width: 62px;
+  border-radius: 7px;
+  margin: 0 auto;
+}
+.bg .show_date p{
+  font-size: 1.7em;
+  color: white;
 }
 .bg .message{
   position: relative;
@@ -159,7 +179,6 @@ body {
 
 .bg .message .name,
   .text,
-  .img,
   .time {
   position: absolute;
 }
@@ -167,17 +186,22 @@ body {
 .bg .message .text {
   margin: 24px;
 }
-.bg .message .time {
-  margin: 5px 0 0 75px;
+
+.bg .message .textTime {
+  margin: 7px 0 0 75px;
   font-size: 10px;
 }
-
-.bg .message .mainimg {
-  display: inline-block;
-  margin: 40px 70px 570px;
+.bg .message .imgTime {
+  margin: 7px 0 0 75px;
+  font-size: 10px;
+}
+.bg .message .mainImg {
+  display: inline;
   max-width: 250px;
   max-height: 250px;
-  /* JSで自身の高さを測る */
+  margin: 40px 0;
+  padding:0;
+  border-radius:15px;
 }
 
 .bg .date {

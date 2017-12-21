@@ -12,7 +12,6 @@ that.onload = () => {
     const showReq = that.indexedDB.open('prototype')
     showReq.onupgradeneeded = (e) => {
         const db = e.target.result
-        console.log('start')
         db.createObjectStore('message', { keyPath: 'idStr', autoIncrement: true })
         db.createObjectStore('shift', { keyPath: 'idStr', autoIncrement: true })
     }
@@ -24,12 +23,14 @@ that.onload = () => {
         request.onsuccess = (e) => {
             const obj = e.target.result
             let details = new String()
+            const dateStr = doDate.getDate()
             for (let j in obj) {
+                if (dateStr !== obj[j].date) continue
                 if (!obj[j].img) {
                     details += '<div class="message">' +
                         '<div class="name">' + obj[j].name + '</div>' +
                         '<div class="text"> ' + obj[j].text + '</div>' +
-                        '<div class="time">' + obj[j].time + '</div>' +
+                        '<div class="textTime">' + obj[j].time + '</div>' +
                         '</div>'
 
                 } else {
@@ -37,15 +38,15 @@ that.onload = () => {
                     details += '<div class="message">' +
                         '<div class="name">' + obj[j].name + '</div>' +
                         '<div class="text"> ' + obj[j].text + '</div>' +
-                        '<div class="img"><img class="mainimg" src="' + url + '"/></div>' +
-                        '<div class="time">' + obj[j].time + '</div>' +
+                        '<div class="imgTime">' + obj[j].time + '</div>' +
+                        '<div class="img"><img class="mainImg" src="' + url + '"/></div>' +
                         '</div>'
-
                 }
+                setDOM(details)
             }
-            $bg.innerHTML = details
         }
     }
+
 
     MainParent.querySelector('.bar')
         .addEventListener('click', formClick, false)
@@ -57,6 +58,24 @@ that.onload = () => {
         .addEventListener('change', doStringChange, false)
     MainParent.querySelector('.submitBtn')
         .addEventListener('click', doSubmit, false)
+
+    const doDate = {
+        getTime: () => {
+            const dt = new Date()
+            const h = dt.getHours()
+            let m = dt.getMinutes()
+            if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
+            return (h + ':' + m)
+        },
+        getDate: () => {
+            const dt = new Date()
+            const year = dt.getFullYear()
+            const month = dt.getMonth() + 1
+            const date = dt.getDate()
+            /*  dateString  */
+            return (year.toString() + month.toString() + date.toString())
+        }
+    }
 
     function formClick(e) {
         let tg
@@ -120,20 +139,18 @@ that.onload = () => {
         const chackValue = valueInput("完了しました^-^")
         if (!chackValue) {
             return false
-            return e.preventDefault()
         }
         e.target.parentElement.querySelector('input[type="text"]').value = ''
         const req = that.indexedDB.open('prototype')
         req.onsuccess = (e) => {
-            const dt = new Date()
-            const h = dt.getHours()
-            let m = dt.getMinutes()
-            if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
-            const timestamp = h + ':' + m
+            /*  timeStamp  */
+            const timestamp = doDate.getTime()
+            /*  CheckToday  */
+            const dateStr = doDate.getTime()
             const result = e.target.result
             const request = result.transaction(['message'], 'readwrite')
                 .objectStore('message')
-                .add({ name: chackValue.name, text: chackValue.text, img: chackValue.img, time: timestamp })
+                .add({ name: chackValue.name, text: chackValue.text, img: chackValue.img, time: timestamp, date: dateStr })
             request.onsuccess = () => {
                 console.log('success')
                 Obj.text = ''
@@ -141,15 +158,20 @@ that.onload = () => {
             }
         }
     }
+    function doScale(e) {
+        if (!e.target.style.maxHeight || e.target.style.maxHeight === '250px') {
+            e.target.style.maxHeight = '100%'
+            e.target.style.maxWidth = '100%'
+        } else {
+            e.target.style.maxHeight = '250px'
+            e.target.style.maxWidth = '250px'
+        }
+    }
+    function setDOM(str) {
+        $bg.innerHTML = str
+        const EventDoc = $bg.querySelectorAll('.mainImg')
+        for (let i = 0; i < EventDoc.length; i++) {
+            EventDoc[i].addEventListener('click', doScale, false)
+        }
+    }
 }
-
-
-//setInterval(() => update(), 1000) 
-
-/*function update() {
-    const dt = new Date()
-    const h = dt.getHours()
-    let m = dt.getMinutes()
-    if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
-    this.setState({ date: h + ':' + m })
-}*/

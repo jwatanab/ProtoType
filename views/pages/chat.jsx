@@ -6,6 +6,8 @@ class Chat extends React.Component {
         super(props)
     }
     render() {
+        const dt = new Date()
+        const date = dt.getDate()
         return (
             <div>
                 <Header />
@@ -18,6 +20,7 @@ class Chat extends React.Component {
                     <div className="date">
                         <div className="title">Message Chat</div>
                     </div>
+                    <div className="show_date"><p>{date}日</p></div>
                     <div className="message_zoom"></div>
                 </div>
                 <div className='chat'>

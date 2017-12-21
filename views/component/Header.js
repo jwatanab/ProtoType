@@ -1,5 +1,4 @@
 const React = require('react')
-const script = require('../../public/scripts/chat')
 
 class Header extends React.Component {
     /*  bind_props  */
@@ -30,11 +29,7 @@ class Header extends React.Component {
                             <h2>シフト管理</h2>
                         </a>
                         <div className="main_menu">
-<<<<<<< HEAD
                             <a href="/comfirm" className="nav_a item">
-=======
-                            <a href="/confirm" className="nav_a item">
->>>>>>> cf4a3bd7c45d1ef6720776297172d95e21d660f1
                                 <span className=''>シフト確認画面</span>
                             </a>
                             <a href="/prompt" className="nav_b item">

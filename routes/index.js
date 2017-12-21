@@ -6,11 +6,7 @@ router.get('/', (req, res) => {
   res.render('pages/flont')
 })
 
-<<<<<<< HEAD
 router.get('/comfirm', (req, res) => {
-=======
-router.get('/confirm', (req, res) => {
->>>>>>> cf4a3bd7c45d1ef6720776297172d95e21d660f1
   res.render('pages/comfirm')
 })
 
