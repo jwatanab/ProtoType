@@ -1,17 +1,9 @@
 const React = require('react')
 const Header = require('../component/Header')
-const request = require('superagent')
 
 class Chat extends React.Component {
     constructor(props) {
         super(props)
-    }
-    submitHandler(event) {
-        event.preventDefault()
-    }
-    odo(e) {
-        console.log('っきうた')
-        console.log(e)
     }
     render() {
         return (

@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   res.render('pages/flont')
 })
 
-router.get('/conform', (req, res) => {
+router.get('/comfirm', (req, res) => {
   res.render('pages/comfirm')
 })
 
