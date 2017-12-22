@@ -20,6 +20,7 @@ class Flont extends React.Component {
                     </p>
                 </div>
                 <Footer />
+                <script src='/scripts/init.js'></script>
             </div>
         )
     }

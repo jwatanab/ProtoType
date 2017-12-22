@@ -10,7 +10,9 @@ class Comfirm extends React.Component {
         return (
             <div>
                 <Header />
-                <h2>ここではシフト確認画面が入ります</h2>
+                <div className='container'>
+                    <h2>ここには確認画面が入ります</h2>
+                </div>
                 <Footer />
             </div>
         )

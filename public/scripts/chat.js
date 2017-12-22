@@ -3,18 +3,12 @@ const that = this
 that.onload = () => {
     const document = that.document
     const MainParent = document.getElementsByClassName('chat')[0]
-    const $bg = $('.message_zoom')[0]
+    const bg = document.getElementsByClassName('message_zoom')[0]
     let Obj = { name: '', text: '', img: null }
 
-    /*  Reset  */
-    //that.indexedDB.deleteDatabase('prototype')
-
     const showReq = that.indexedDB.open('prototype')
-    showReq.onupgradeneeded = (e) => {
-        const db = e.target.result
-        db.createObjectStore('message', { keyPath: 'idStr', autoIncrement: true })
-        db.createObjectStore('shift', { keyPath: 'idStr', autoIncrement: true })
-    }
+
+    /*  レコード表示  */
     showReq.onsuccess = (e) => {
         const db = e.target.result
         const request = db.transaction('message')
@@ -47,7 +41,7 @@ that.onload = () => {
         }
     }
 
-
+    /*  チャット機能付加  */
     MainParent.querySelector('.bar')
         .addEventListener('click', formClick, false)
     MainParent.querySelector('.i')
@@ -59,12 +53,14 @@ that.onload = () => {
     MainParent.querySelector('.submitBtn')
         .addEventListener('click', doSubmit, false)
 
+    /*  機能関数  */
     const doDate = {
         getTime: () => {
             const dt = new Date()
             const h = dt.getHours()
             let m = dt.getMinutes()
             if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
+            /*  timeString  */
             return (h + ':' + m)
         },
         getDate: () => {
@@ -79,6 +75,7 @@ that.onload = () => {
 
     function formClick(e) {
         let tg
+        /*  最悪の処理  */
         if (e.target.className === 'bar') {
             tg = e.target
         }
@@ -140,17 +137,13 @@ that.onload = () => {
         if (!chackValue) {
             return false
         }
-        e.target.parentElement.querySelector('input[type="text"]').value = ''
+        e.target.parentElement.querySelector('textarea').value = ''
         const req = that.indexedDB.open('prototype')
         req.onsuccess = (e) => {
-            /*  timeStamp  */
-            const timestamp = doDate.getTime()
-            /*  CheckToday  */
-            const dateStr = doDate.getDate()
             const result = e.target.result
             const request = result.transaction(['message'], 'readwrite')
                 .objectStore('message')
-                .add({ name: chackValue.name, text: chackValue.text, img: chackValue.img, time: timestamp, date: dateStr })
+                .add({ name: chackValue.name, text: chackValue.text, img: chackValue.img, time: doDate.getTime(), date: doDate.getDate() })
             request.onsuccess = () => {
                 console.log('success')
                 Obj.text = ''
@@ -168,8 +161,8 @@ that.onload = () => {
         }
     }
     function setDOM(str) {
-        $bg.innerHTML = str
-        const EventDoc = $bg.querySelectorAll('.mainImg')
+        bg.innerHTML = str
+        const EventDoc = bg.querySelectorAll('.mainImg')
         for (let i = 0; i < EventDoc.length; i++) {
             EventDoc[i].addEventListener('click', doScale, false)
         }
