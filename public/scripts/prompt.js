@@ -21,14 +21,12 @@ that.onload = () => {
             const h = dt.getHours()
             let m = dt.getMinutes()
             if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
-            /*  hour + minutes string  */
             return (h + ':' + m)
         },
         getDate: () => {
             const dt = new Date()
             const year = dt.getFullYear()
             const month = dt.getMonth() + 1
-            /*  dateString  */
             return (year.toString() + month.toString())
         }
     }
@@ -71,7 +69,6 @@ that.onload = () => {
             alert('シフトの送信に成功しました')
             Obj.check = false
         }
-        /*  空チェック  */
         const req = that.indexedDB.open('prototype')
         req.onsuccess = (e) => {
             const result = e.target.result
@@ -79,7 +76,6 @@ that.onload = () => {
                 .objectStore('shift')
                 .add({ name: Obj.name, remarks: Obj.remarks, ary: Obj.ary, dateStr: doDate.getDate() })
             request.onsuccess = () => {
-                console.log('success')
                 Obj.ary.length = 0
                 Obj.remarks = null
             }
