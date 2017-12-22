@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-/* GET home page. */
+/* do Routing */
 router.get('/', (req, res) => {
   res.render('pages/flont')
 })
 
-router.get('/comfirm', (req, res) => {
-  res.render('pages/comfirm')
+router.get('/confirm', (req, res) => {
+  res.render('pages/confirm')
 })
 
 router.get('/prompt', (req, res) => {

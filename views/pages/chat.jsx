@@ -1,5 +1,6 @@
 const React = require('react')
 const Header = require('../component/Header')
+const Footer = require('../component/Footer')
 
 class Chat extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Chat extends React.Component {
                     <div className='bar'>
                         <h3 className='people'>氏名:</h3>
                         <input className='file' type='file' multiple />
-                        <input className='textInput' type='text' />
+                        <textarea className='textInput' title='メッセージ'></textarea>
                         <button className='submitBtn'>送信</button>
                         <i className='i'>
                             <i className="fa fa-picture-o"></i>
@@ -37,7 +38,6 @@ class Chat extends React.Component {
                     <div className="footer">
                         <div className="owner"></div>
                     </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                     <script src="/scripts/chat.js"></script>
                 </div>
             </div>
