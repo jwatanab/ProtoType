@@ -151,6 +151,7 @@ body {
     margin: 14px
 }
 .bg {
+    position: relative;
     width: 850px;
     padding-bottom: 50px;
     height: auto;
@@ -208,9 +209,13 @@ body {
 .bg .date {
   line-height: 45px;
   background-color: rgba(97, 97, 97, 0.301);
+  
 }
 
 .bg .date .title {
+  position: absolute;
+  top: 0;
+  left:0;
   font-size: 18px;
   text-align: center;
   color: rgba(211, 211, 211, 0.9);
@@ -273,11 +278,17 @@ body {
   text-align: center;
 }
 
-.confirm .header{
-  display: table;
-}
-
 .confirm .header .title,.date{
   display: inline-table;
   margin: 0 30px;
+}
+
+.confirm .main_table .table_td{
+  text-align: center;
+  padding: 7px 0 12px;
+  letter-spacing: 2px;
+}
+
+.confirm .main_table .message{
+  padding: 25px 0;
 }

@@ -36,17 +36,11 @@ that.onload = () => {
         const ret = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getDate()
         return ret
     }
-
     let rKey = 7,
-        today = getLast(new Object),
-        lastDay = getLast(),
-        r = getLast() - today
-
+        r = getLast() - getLast(new Object)
     function startShift(e) {
         MainParent.innerHTML += e;
     }
-
-
     const showReq = that.indexedDB.open('prototype')
     showReq.onsuccess = (e) => {
         const db = e.target.result
@@ -60,15 +54,21 @@ that.onload = () => {
                 /*  3つの配列の年月が合わない場合には処理をスキップ  */
                 if (result[i].dateStr !== doDate.getDate()) continue
                 /*  年月が合致した場合には配列の中のシフトをループ  */
-                console.log(result[i])
                 for (let l in result[i].ary) {
                     /*  配列の中の配列のシフトが現在日と一致した場合  */
-                    if (result[i].ary[l].name == today) {
+                    if (result[i].ary[l].name == getLast(new Object)) {
                         let details = '<td class="table_td">' + result[i].name + '</td>'
                         let number = Number(result[i].ary[l].name - 1)
-                        /*  7日分DOMに追加  */
-                        for (let k = number, o = number + 7; k < o; k++) {
-                            details += '<td class="table_td">' + result[i].ary[k].value + '</td>'
+                        if (r < rKey) {
+                            /*  月の残りが1週間切っている場合には調整  */
+                            for (let k = number, o = number + r + 1; k < o; k++) {
+                                details += '<td class="table_td">' + result[i].ary[k].value + '</td>'
+                            }
+                        } else {
+                            /*  7日分DOMに追加  */
+                            for (let k = number, o = number + 7; k < o; k++) {
+                                details += '<td class="table_td">' + result[i].ary[k].value + '</td>'
+                            }
                         }
                         startShift(details)
                     }
