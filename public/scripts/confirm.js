@@ -49,13 +49,13 @@ that.onload = () => {
             .getAll()
         request.onsuccess = (e) => {
             const result = e.target.result
-            /*  配列をループ(2)  */
+            /*  配列をループ  */
             for (let i in result) {
-                /*  3つの配列の年月が合わない場合には処理をスキップ  */
+                /*  配列の年月が合わない場合には処理をスキップ  */
                 if (result[i].dateStr !== doDate.getDate()) continue
                 /*  年月が合致した場合には配列の中のシフトをループ  */
                 for (let l in result[i].ary) {
-                    /*  配列の中の配列のシフトが現在日と一致した場合  */
+                    /*  配列内配列のシフトと現在日が一致した場合  */
                     if (result[i].ary[l].name == getLast(new Object)) {
                         let details = '<td class="table_td">' + result[i].name + '</td>'
                         let number = Number(result[i].ary[l].name - 1)

@@ -35,15 +35,18 @@ class Prompt extends React.Component {
                 let n = this.getLast() - i
                 /*  最後の週になったとき  */
                 if (n < rKey) {
+                    /*  修正  */
                     i++
                     /*  細かく値を出力する  */
                     for (let g = 0; g < rKey; g++ , nKey++) {
                         list.push(<td><input name={nKey} className='table_td' /></td>)
                     }
+                    /*  整形  */
                     list.push(<tr></tr>)
                     for (let s = 0; s < n; s++ , i++) {
                         list.push(<th className='table_th'>{i}日</th>)
                     }
+                    /*  修正  */
                     list.push(<tr></tr>)
                     for (let k = 0; k < n; k++ , nKey++) {
                         list.push(<td><input name={nKey} className='table_td' /></td>)
