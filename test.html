@@ -6,6 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        html {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
         .bg {
             width: 850px;
             height: 580px;
@@ -91,50 +101,9 @@
             </div>
         </div>
     </div>
+    <div class="footer">
+        <div class="content"></div>
+    </div>
 </body>
-
-<script>
-    let dom = new Array()
-    for (let j in obj) {
-        if (!obj.img) {
-            /* obj.length */
-            for (let i = 0; i < 4; i++) {
-                dom[i] = document.createElement('div')
-            }
-            dom[0].className = 'message'
-            dom[1].className = 'name'
-            dom[2].className = 'text'
-            dom[3].className = 'time'
-            dom[1].innerHTML = obj.name
-            dom[2].innerHTML = obj.text
-            /*  Image処理  */
-            dom[3].innerHTML = obj.time
-            dom[0].appendChild(dom[1])
-            dom[0].appendChild(dom[2])
-            dom[0].appendChild(dom[3])
-        } else {
-            for (let i = 0; i < 5; i++) {
-                dom[i] = document.createElement('div')
-            }
-            dom[0].className = 'message'
-            dom[1].className = 'name'
-            dom[2].className = 'text'
-            dom[3].className = 'img'
-            dom[4].className = 'time'
-
-            dom[1].innerHTML = obj.name
-            dom[2].innerHTML = obj.text
-            /*  Image処理  */
-            dom[4].innerHTML = obj.time
-            dom[0].appendChild(dom[1])
-            dom[0].appendChild(dom[2])
-            dom[0].appendChild(dom[3])
-            dom[0].appendChild(dom[4])
-        }
-        console.log(dom)
-        bg.appendChild(dom)
-    }
-        }
-</script>
 
 </html>

@@ -1,5 +1,6 @@
 const React = require('react')
 const Header = require('../component/Header')
+const Footer = require('../component/Footer')
 
 class Flont extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Flont extends React.Component {
                        Suspendisse ligula turpis, ullamcorper quis aliquet a, congue eget velit. Integer non elementum mi. Duis vel mauris ut urna suscipit facilisis. Nunc eu venenatis elit. Quisque id mollis magna, nec hendrerit justo. Aliquam in sem nec risus ullamcorper tincidunt quis vel orci. Phasellus consequat magna nec tellus commodo, nec egestas ipsum dignissim. Aliquam tempus id dolor ac auctor. Morbi facilisis, metus ac sodales cursus, nibh dui accumsan augue, molestie vulputate velit elit in tellus.
                     </p>
                 </div>
+                <Footer />
             </div>
         )
     }

@@ -146,7 +146,7 @@ that.onload = () => {
             /*  timeStamp  */
             const timestamp = doDate.getTime()
             /*  CheckToday  */
-            const dateStr = doDate.getTime()
+            const dateStr = doDate.getDate()
             const result = e.target.result
             const request = result.transaction(['message'], 'readwrite')
                 .objectStore('message')

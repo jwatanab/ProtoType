@@ -1,5 +1,6 @@
 const React = require('react')
 const Header = require('../component/Header')
+const Footer = require('../component/Footer')
 
 class Comfirm extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class Comfirm extends React.Component {
             <div>
                 <Header />
                 <h2>ここではシフト確認画面が入ります</h2>
+                <Footer />
             </div>
         )
     }

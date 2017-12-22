@@ -1,5 +1,6 @@
 const React = require('react')
 const Header = require('../component/Header')
+const Footer = require('../component/Footer')
 
 class Prompt extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Prompt extends React.Component {
             <div>
                 <Header />
                 <h2>ここではシフト入力画面が入ります</h2>
+                <Footer />
             </div>
         )
     }
