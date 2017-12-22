@@ -79,7 +79,7 @@ class Prompt extends React.Component {
                         <div className='chat'>
                             <div className='bar'>
                                 <h3 className='people'>氏名:</h3>
-                                <textarea className='textInput' title='備考欄'></textarea>
+                                <textarea className='textInput' rows='5' cols='30' placeholder='備考欄'></textarea>
                                 <button className='submitBtn'>送信</button>
                             </div>
                         </div>

@@ -12,23 +12,23 @@ class Chat extends React.Component {
         return (
             <div>
                 <Header />
-                <div className="right">
-                    <div className="content_date">
-                        <span className=''></span>
-                    </div>
-                </div>
-                <div className='bg'>
-                    <div className="date">
-                        <div className="title">Message Chat</div>
-                    </div>
-                    <div className="show_date"><p>{date}日</p></div>
-                    <div className="message_zoom"></div>
-                </div>
                 <div className='chat'>
+                    <div className="right">
+                        <div className="content_date">
+                            <span className=''></span>
+                        </div>
+                    </div>
+                    <div className='bg'>
+                        <div className="date">
+                            <div className="title">Message Chat</div>
+                            <div className="show_date">{date}日</div>
+                        </div>
+                        <div className="message_zoom"></div>
+                    </div>
                     <div className='bar'>
                         <h3 className='people'>氏名:</h3>
                         <input className='file' type='file' multiple />
-                        <textarea className='textInput' title='メッセージ'></textarea>
+                        <textarea className='textInput' title='メッセージ' placeholder='メッセージ'></textarea>
                         <button className='submitBtn'>送信</button>
                         <i className='i'>
                             <i className="fa fa-picture-o"></i>
@@ -40,6 +40,7 @@ class Chat extends React.Component {
                     </div>
                     <script src="/scripts/chat.js"></script>
                 </div>
+                <Footer />
             </div>
         )
     }
