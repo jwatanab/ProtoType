@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-/* GET home page. */
+/* do Routing */
 router.get('/', (req, res) => {
   res.render('pages/flont')
 })
