@@ -262,3 +262,22 @@ body {
   border: 1px solid #ddd;
   width: 124px;
 }
+
+.confirm .main_table{
+  margin: 40px auto;
+  width: 95%;
+  font-size: 1.4em;
+}
+
+.confirm .main_table .table_cell td{
+  text-align: center;
+}
+
+.confirm .header{
+  display: table;
+}
+
+.confirm .header .title,.date{
+  display: inline-table;
+  margin: 0 30px;
+}

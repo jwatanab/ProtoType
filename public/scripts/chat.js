@@ -11,7 +11,7 @@ that.onload = () => {
     /*  レコード表示  */
     showReq.onsuccess = (e) => {
         const db = e.target.result
-        const request = db.transaction('message')
+        const request = db.transaction(['message'], 'readonly')
             .objectStore('message')
             .getAll()
         request.onsuccess = (e) => {
@@ -92,6 +92,7 @@ that.onload = () => {
         valueInput(name)
     }
     function valueInput(e) {
+        /*  これもひどい  */
         if (typeof e === 'object') {
             Obj.img = e
             return
@@ -109,10 +110,12 @@ that.onload = () => {
         }
     }
     function doPass(e) {
+        /*  最悪  */
         const img = e.target.parentElement.parentElement.querySelector('input')
         img.click()
     }
     function doFileChange(e) {
+        /*  これも  */
         const file = e.target.files[0]
         if (file === undefined) {
             console.log('再度クリックしてください')

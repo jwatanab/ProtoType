@@ -57,17 +57,20 @@ that.onload = () => {
         for (let i = 0; i < target.length; i++) {
             if (!target[i].value) {
                 Obj.check = true
-            } else {
-                Obj.ary.push({ name: target[i].name, value: target[i].value })
-                target[i].value = ''
+                break
             }
+            Obj.ary.push({ name: target[i].name, value: target[i].value })
         }
+
         if (Obj.check) {
             alert('未記入の項目があります、確認を行ってください')
             return false
         } else {
             alert('シフトの送信に成功しました')
             Obj.check = false
+            for (let i = 0; i < target.length; i++) {
+                target[i].value = ''
+            }
         }
         const req = that.indexedDB.open('prototype')
         req.onsuccess = (e) => {

@@ -29,7 +29,7 @@ class Header extends React.Component {
                             <h2>シフト管理</h2>
                         </a>
                         <div className="main_menu">
-                            <a href="/comfirm" className="nav_a item">
+                            <a href="/confirm" className="nav_a item">
                                 <span className=''>シフト確認画面</span>
                             </a>
                             <a href="/prompt" className="nav_b item">
