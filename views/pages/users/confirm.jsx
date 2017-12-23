@@ -1,6 +1,6 @@
 const React = require('react')
-const Header = require('../component/Header')
-const Footer = require('../component/Footer')
+const Header = require('../../component/Header')
+const Footer = require('../../component/Footer')
 
 class Comfirm extends React.Component {
     constructor(props) {
