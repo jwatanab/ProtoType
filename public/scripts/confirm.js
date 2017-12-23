@@ -76,4 +76,18 @@ that.onload = () => {
             }
         }
     }
+    const Footer = document.getElementById('footer')
+
+    Footer.querySelector('.owner')
+        .addEventListener('click', locationOwner, false)
+    Footer.querySelector('.guide')
+        .addEventListener('click', locationGuide, false)
+
+    function locationOwner(e) {
+        console.log(e.target)
+    }
+
+    function locationGuide(e) {
+        console.log(e.target)
+    }
 }

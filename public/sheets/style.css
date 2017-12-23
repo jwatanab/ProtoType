@@ -84,13 +84,13 @@ body {
   text-align: left
 }
 /*  Footer  */
-.footer {
+#footer {
   margin-top: 30px;
 }
-.footer .link .title{
+#footer .link .title{
   transition: .3s;
 }
-.footer .link .title:hover{
+#footer .link .title:hover{
   color: #1ba0ff;
 }
 /*  Chat  */
@@ -179,6 +179,7 @@ body {
 }
 .chat .bg .message{
   display: table;
+  width: 60%;
   padding: 0 30px 15px;
   font-size: 15px;
 }

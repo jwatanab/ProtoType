@@ -38,8 +38,8 @@ class Chat extends React.Component {
                     <div className="footer">
                         <div className="owner"></div>
                     </div>
-                    <script src="/scripts/chat.js"></script>
                 </div>
+                <script src="/scripts/chat.js"></script>
                 <Footer />
             </div>
         )

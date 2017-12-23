@@ -14,10 +14,10 @@ class Footer extends React.Component {
          */
         return (
             <div className='container'>
-                <div className='footer'>
+                <div id='footer'>
                     <div className='link'>
-                        <h3 className='title'>管理者ログイン</h3>
-                        <h3 className='title'>利用方法</h3>
+                        <h2 className='title owner'>管理者ログイン</h2>
+                        <h2 className='title guide'>利用方法</h2>
                     </div>
                 </div>
             </div>

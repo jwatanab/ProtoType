@@ -88,8 +88,8 @@ class Prompt extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
                 <script src='/scripts/prompt.js'></script>
+                <Footer />
             </div>
         )
     }
