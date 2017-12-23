@@ -39,6 +39,7 @@ class Chat extends React.Component {
                         <div className="owner"></div>
                     </div>
                 </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script src="/scripts/chat.js"></script>
                 <Footer />
             </div>
