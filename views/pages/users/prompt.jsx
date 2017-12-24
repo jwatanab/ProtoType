@@ -95,6 +95,15 @@ class Prompt extends React.Component {
     }
 }
 
-Header.defaultProps = { initial: 'シフト入力画面' }
+Header.defaultProps = {
+    initial: 'シフト入力画面',
+    item1: 'シフト確認画面画面',
+    item2: 'シフト投稿画面',
+    item3: 'チャット画面',
+    link1: '/confirm',
+    link2: '/prompt',
+    link3: '/chat',
+    title: 'シフト管理'
+}
 
 module.exports = Prompt
