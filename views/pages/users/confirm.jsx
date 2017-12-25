@@ -66,9 +66,11 @@ Header.defaultProps = {
     item1: 'シフト確認画面画面',
     item2: 'シフト投稿画面',
     item3: 'チャット画面',
-    link1: '/confirm',
-    link2: '/prompt',
-    link3: '/chat',
+    item4: '予定表確認画面',
+    link1: '/users/confirm',
+    link2: '/users/prompt',
+    link3: '/users/chat',
+    link4: '/users/plans',
     title: 'シフト管理'
 }
 

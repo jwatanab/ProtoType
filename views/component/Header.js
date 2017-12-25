@@ -10,9 +10,11 @@ class Header extends React.Component {
             item1: this.props.item1,
             item2: this.props.item2,
             item3: this.props.item3,
+            item4: this.props.item4,
             link1: this.props.link1,
             link2: this.props.link2,
             link3: this.props.link3,
+            link4: this.props.link4,
             title: this.props.title
         }
     }
@@ -40,6 +42,10 @@ class Header extends React.Component {
                             <input type='password' className='input_password' />
                         </div>
                     </div>
+                    <div id='modal_window_image'>
+                        <span className='close'>&times;</span>
+                        <img src="" alt="シフト画像" />
+                    </div>
                     <div className="container">
                         <div className="header">
                             <div className="left">
@@ -52,31 +58,48 @@ class Header extends React.Component {
                             <h2>{this.state.title}</h2>
                         </a>
                         <div className="main_menu">
-                            <a href={this.state.link1} className="nav_a item">
-                                <span>{this.state.item1}</span>
-                            </a>
-                            <a href={this.state.link2} className="nav_b item">
-                                <span>{this.state.item2}</span>
-                            </a>
-                            <a href={this.state.link3} className="nav_c item">
-                                <span>{this.state.item3}</span>
-                            </a>
+                            {(() => {
+                                if (this.state.link1) {
+                                    return (
+                                        <a href={this.state.link1} className="nav_a item">
+                                            <span>{this.state.item1}</span>
+                                        </a>
+                                    )
+                                }
+                            })()}
+                            {(() => {
+                                if (this.state.link2) {
+                                    return (
+                                        <a href={this.state.link2} className="nav_b item">
+                                            <span>{this.state.item2}</span>
+                                        </a>
+                                    )
+                                }
+                            })()}
+                            {(() => {
+                                if (this.state.link3) {
+                                    return (
+                                        <a href={this.state.link3} className="nav_c item">
+                                            <span>{this.state.item3}</span>
+                                        </a>
+                                    )
+                                }
+                            })()}
+                            {(() => {
+                                if (this.state.link4) {
+                                    return (
+                                        <a href={this.state.link4} className="nav_c item">
+                                            <span>{this.state.item4}</span>
+                                        </a>
+                                    )
+                                }
+                            })()}
                         </div>
                     </div>
                 </body>
             </html>
         )
     }
-}
-
-Header.defaultProps = {
-    item1: 'シフト確認画面画面',
-    item2: 'シフト投稿画面',
-    item3: 'チャット画面',
-    link1: '/confirm',
-    link2: '/prompt',
-    link3: '/chat',
-    title: 'シフト管理'
 }
 
 module.exports = Header
