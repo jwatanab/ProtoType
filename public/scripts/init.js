@@ -5,11 +5,12 @@ that.onload = () => {
     /*  Reset  */
     //that.indexedDB.deleteDatabase('prototype')
 
-    const request = that.indexedDB.open('prototype')
+    const request = that.indexedDB.open('prototype', 2)
     request.onupgradeneeded = (e) => {
         const db = e.target.result
         db.createObjectStore('message', { keyPath: 'idStr', autoIncrement: true })
         db.createObjectStore('shift', { keyPath: 'idStr', autoIncrement: true })
+        db.createObjectStore('image', { keyPath: 'idStr', autoIncrement: true })
     }
     $(function () {
         /*  Footer Script  */
@@ -42,7 +43,7 @@ that.onload = () => {
         }
 
         function setScreen(e) {
-            const top = $(window).scrollTop() + (e.height() / 4)
+            const top = $(window).scrollTop() + (e.height() / 2)
             const left = ($(window).width() / 2) - (e.width() / 2)
             e.css({ top: top, left: left })
             $(window).on('wheel', function (e) {

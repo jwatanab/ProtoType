@@ -112,7 +112,7 @@ that.onload = () => {
         }
 
         function setScreen(e) {
-            const top = $(window).scrollTop() + (e.height() / 4)
+            const top = $(window).scrollTop() + (e.height() / 2)
             const left = ($(window).width() / 2) - (e.width() / 2)
             e.css({ top: top, left: left })
             $(window).on('wheel', function (e) {
