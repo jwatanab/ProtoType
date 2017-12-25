@@ -6,40 +6,7 @@ that.onload = () => {
     const bg = document.getElementsByClassName('message_zoom')[0]
     let Obj = { name: '', text: '', img: null }
 
-    const showReq = that.indexedDB.open('prototype')
-
-    /*  レコード表示  */
-    showReq.onsuccess = (e) => {
-        const db = e.target.result
-        const request = db.transaction(['message'], 'readonly')
-            .objectStore('message')
-            .getAll()
-        request.onsuccess = (e) => {
-            const obj = e.target.result
-            let details = new String()
-            const dateStr = doDate.getDate()
-            for (let j in obj) {
-                if (dateStr !== obj[j].date) continue
-                if (!obj[j].img) {
-                    details += '<div class="message">' +
-                        '<div class="name">' + obj[j].name + '</div>' +
-                        '<div class="text"> ' + obj[j].text + '</div>' +
-                        '<div class="textTime">' + obj[j].time + '</div>' +
-                        '</div>'
-
-                } else {
-                    let url = URL.createObjectURL(obj[j].img);
-                    details += '<div class="message">' +
-                        '<div class="name">' + obj[j].name + '</div>' +
-                        '<div class="text"> ' + obj[j].text + '</div>' +
-                        '<div class="imgTime">' + obj[j].time + '</div>' +
-                        '<div class="img"><img class="mainImg" src="' + url + '"/></div>' +
-                        '</div>'
-                }
-                setDOM(details)
-            }
-        }
-    }
+    showDatebase()
 
     /*  チャット機能付加  */
     MainParent.querySelector('.bar')
@@ -143,12 +110,16 @@ that.onload = () => {
         e.target.parentElement.querySelector('textarea').value = ''
         const req = that.indexedDB.open('prototype')
         req.onsuccess = (e) => {
+            /*  timeStamp  */
+            const timestamp = doDate.getTime()
+            /*  CheckToday  */
+            const dateStr = doDate.getDate()
             const result = e.target.result
             const request = result.transaction(['message'], 'readwrite')
                 .objectStore('message')
                 .add({ name: chackValue.name, text: chackValue.text, img: chackValue.img, time: doDate.getTime(), date: doDate.getDate() })
             request.onsuccess = () => {
-                console.log('success')
+                showDatebase()
                 Obj.text = ''
                 Obj.img = null
             }
@@ -170,4 +141,88 @@ that.onload = () => {
             EventDoc[i].addEventListener('click', doScale, false)
         }
     }
+    function showDatebase() {
+        const showReq = that.indexedDB.open('prototype')
+        showReq.onsuccess = (e) => {
+            const db = e.target.result
+            const request = db.transaction(['message'], 'readonly')
+                .objectStore('message')
+                .getAll()
+            request.onsuccess = (e) => {
+                const obj = e.target.result
+                let details = new String()
+                const dateStr = doDate.getDate()
+                for (let j in obj) {
+                    if (dateStr !== obj[j].date) continue
+                    if (!obj[j].img) {
+                        details += '<div class="message">' +
+                            '<div class="name">' + obj[j].name + '</div>' +
+                            '<div class="time">' + obj[j].time + '</div>' +
+                            '<div class="text"> ' + obj[j].text + '</div>' +
+                            '</div>'
+
+                    } else {
+                        let url = URL.createObjectURL(obj[j].img);
+                        details += '<div class="message">' +
+                            '<div class="name">' + obj[j].name + '</div>' +
+                            '<div class="time">' + obj[j].time + '</div>' +
+                            '<div class="text"> ' + obj[j].text + '</div>' +
+                            '<div class="img"><img class="mainImg" src="' + url + '"/></div>' +
+                            '</div>'
+                    }
+                    setDOM(details)
+                }
+            }
+        }
+    }
+    $(function () {
+        /*  Footer Script  */
+        const $Footer = $('#footer')
+        const $modal_bg = $('#modal_bg')
+        const $modal_window = $('#modal_window')
+        let validate = { name: false, password: false }
+
+        $Footer.find('.owner').on('click', locationOwner)
+        $Footer.find('.guide').on('click', locationGuide)
+        /*  Login Script  */
+        $modal_window.find('.close').on('click', window_close)
+        $modal_window.find('input').on('change', valueChange)
+
+        function window_close() {
+            $modal_bg.fadeOut()
+            $modal_window.fadeOut()
+            $(window).off('wheel')
+        }
+
+        function locationOwner(e) {
+            setScreen($modal_window)
+            $modal_bg.fadeIn()
+            $modal_window.fadeIn()
+        }
+
+        function locationGuide(e) {
+            /*  推移  */
+            window.location = '/'
+        }
+
+        function setScreen(e) {
+            const top = $(window).scrollTop() + (e.height() / 4)
+            const left = ($(window).width() / 2) - (e.width() / 2)
+            e.css({ top: top, left: left })
+            $(window).on('wheel', function (e) {
+                e.preventDefault()
+            })
+        }
+        function valueChange(e) {
+            if (e.target.value) {
+                if (e.target.className === 'input_name') {
+                    if (e.target.value === 'root') validate.name = true
+                }
+                if (e.target.className === 'input_password') {
+                    if (e.target.value === 'pass') validate.password = true
+                }
+                if (validate.name && validate.password) location = '/'
+            }
+        }
+    })
 }

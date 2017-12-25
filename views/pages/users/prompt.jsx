@@ -1,6 +1,6 @@
 const React = require('react')
-const Header = require('../component/Header')
-const Footer = require('../component/Footer')
+const Header = require('../../component/Header')
+const Footer = require('../../component/Footer')
 
 class Prompt extends React.Component {
     constructor(props) {
@@ -35,15 +35,18 @@ class Prompt extends React.Component {
                 let n = this.getLast() - i
                 /*  最後の週になったとき  */
                 if (n < rKey) {
+                    /*  修正  */
                     i++
                     /*  細かく値を出力する  */
                     for (let g = 0; g < rKey; g++ , nKey++) {
                         list.push(<td><input name={nKey} className='table_td' /></td>)
                     }
+                    /*  整形  */
                     list.push(<tr></tr>)
                     for (let s = 0; s < n; s++ , i++) {
                         list.push(<th className='table_th'>{i}日</th>)
                     }
+                    /*  修正  */
                     list.push(<tr></tr>)
                     for (let k = 0; k < n; k++ , nKey++) {
                         list.push(<td><input name={nKey} className='table_td' /></td>)
@@ -79,19 +82,28 @@ class Prompt extends React.Component {
                         <div className='chat'>
                             <div className='bar'>
                                 <h3 className='people'>氏名:</h3>
-                                <textarea className='textInput' title='備考欄'></textarea>
+                                <textarea className='textInput' rows='5' cols='30' placeholder='備考欄'></textarea>
                                 <button className='submitBtn'>送信</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <Footer />
                 <script src='/scripts/prompt.js'></script>
+                <Footer />
             </div>
         )
     }
 }
 
-Header.defaultProps = { initial: 'シフト入力画面' }
+Header.defaultProps = {
+    initial: 'シフト入力画面',
+    item1: 'シフト確認画面画面',
+    item2: 'シフト投稿画面',
+    item3: 'チャット画面',
+    link1: '/confirm',
+    link2: '/prompt',
+    link3: '/chat',
+    title: 'シフト管理'
+}
 
 module.exports = Prompt

@@ -7,15 +7,15 @@ router.get('/', (req, res) => {
 })
 
 router.get('/confirm', (req, res) => {
-  res.render('pages/confirm')
+  res.render('pages/users/confirm')
 })
 
 router.get('/prompt', (req, res) => {
-  res.render('pages/prompt')
+  res.render('pages/users/prompt')
 })
 
 router.get('/chat', (req, res) => {
-  res.render('pages/chat')
+  res.render('pages/users/chat')
 })
 
 module.exports = router;
