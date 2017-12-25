@@ -2,7 +2,38 @@ const that = this
 
 that.onload = () => {
     const document = that.document
+    that.sessionStorage.loginKey = ''
     const MainParent = document.getElementsByClassName('shift_image')[0]
+    const doDate = {
+        getTime: () => {
+            const dt = new Date()
+            const h = dt.getHours()
+            let m = dt.getMinutes()
+            if (m.toString().length !== 2) { m = '0' + dt.getMinutes() }
+            return (h + ':' + m)
+        },
+        getDate: () => {
+            const dt = new Date()
+            const year = dt.getFullYear()
+            const month = dt.getMonth() + 1
+            const date = dt.getDate()
+            return (year.toString() + month.toString() + date.toString())
+        },
+        /*  表示用  */
+        getMonth: () => {
+            const dt = new Date()
+            const month = dt.getMonth() + 1
+            const day = dt.getDate()
+            return (month.toString() + '/' + day.toString())
+        },
+        /*  年度月日確認  */
+        getFulldate: () => {
+            const dt = new Date()
+            const year = dt.getFullYear()
+            const month = dt.getMonth() + 1
+            return (year.toString() + month.toString())
+        }
+    }
     const showReq = that.indexedDB.open('prototype', 2)
     showReq.onsuccess = (e) => {
         const db = e.target.result
@@ -13,6 +44,7 @@ that.onload = () => {
             const result = e.target.result
             let details = new String()
             for (let i = 0; i < result.length; i++) {
+                if (result[i].check !== doDate.getFulldate()) return
                 let url = URL.createObjectURL(result[i].img)
                 details += '<div class="imgComponent"><p class="inner_text">' + result[i].date + '</p>'
                 details += '<img src ="' + url + '" /></div>'
@@ -95,7 +127,10 @@ that.onload = () => {
                 if (e.target.className === 'input_password') {
                     if (e.target.value === 'pass') validate.password = true
                 }
-                if (validate.name && validate.password) location = '/owner/index'
+                if (validate.name && validate.password) {
+                    location = '/owner/index'
+                    window.sessionStorage.loginKey = 'on'
+                }
             }
         }
     })

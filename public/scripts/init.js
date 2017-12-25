@@ -6,6 +6,7 @@ that.onload = () => {
     //that.indexedDB.deleteDatabase('prototype')
 
     const request = that.indexedDB.open('prototype', 2)
+    that.sessionStorage.loginKey = ''
     request.onupgradeneeded = (e) => {
         const db = e.target.result
         db.createObjectStore('message', { keyPath: 'idStr', autoIncrement: true })
@@ -58,7 +59,10 @@ that.onload = () => {
                 if (e.target.className === 'input_password') {
                     if (e.target.value === 'pass') validate.password = true
                 }
-                if (validate.name && validate.password) location = '/owner/index'
+                if (validate.name && validate.password) {
+                    window.sessionStorage.loginKey = 'on'
+                    location = '/owner/index'
+                }
             }
         }
     })

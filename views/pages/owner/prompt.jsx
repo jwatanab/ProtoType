@@ -22,7 +22,7 @@ class OwnerPrompt extends React.Component {
                     </div>
                     <Bar />
                 </div>
-                <script src='/scripts/ownerprompt.js'></script>
+                <script src='/scripts/owner/prompt.js'></script>
                 <Footer />
             </div>
         )

@@ -19,6 +19,7 @@ class Owner extends React.Component {
                        Suspendisse ligula turpis, ullamcorper quis aliquet a, congue eget velit. Integer non elementum mi. Duis vel mauris ut urna suscipit facilisis. Nunc eu venenatis elit. Quisque id mollis magna, nec hendrerit justo. Aliquam in sem nec risus ullamcorper tincidunt quis vel orci. Phasellus consequat magna nec tellus commodo, nec egestas ipsum dignissim. Aliquam tempus id dolor ac auctor. Morbi facilisis, metus ac sodales cursus, nibh dui accumsan augue, molestie vulputate velit elit in tellus.
                     </p>
                 </div>
+                <script src='/scripts/owner/index.js'></script>
                 <Footer />
             </div>
         )
@@ -30,6 +31,7 @@ Header.defaultProps = {
     initial: 'ログイン完了',
     title: '管理者ログイン',
     /*  init  */
+    home: '/owner/index',
     item1: '確定予定表送信',
     link1: '/owner/prompt',
     item2: '管理者シフト確認',

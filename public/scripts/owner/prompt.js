@@ -1,6 +1,7 @@
 const that = this
 
 that.onload = () => {
+    if (!that.sessionStorage.loginKey) that.location = '/'
     const document = that.document
     const MainParent = document.getElementsByClassName('chat')[0]
     const bg = document.getElementsByClassName('message_zoom')[0]
@@ -130,6 +131,7 @@ that.onload = () => {
         $Footer.find('.owner').on('click', locationOwner)
         $Footer.find('.guide').on('click', locationGuide)
         function locationOwner(e) {
+            window.sessionStorage.loginKey = undefined
             window.location = '/'
         }
         function locationGuide(e) {

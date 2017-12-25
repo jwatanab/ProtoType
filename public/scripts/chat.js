@@ -2,6 +2,7 @@ const that = this
 
 that.onload = () => {
     const document = that.document
+    that.sessionStorage.loginKey = ''
     const MainParent = document.getElementsByClassName('chat')[0]
     const bg = document.getElementsByClassName('message_zoom')[0]
     let Obj = { name: '', text: '', img: null }
@@ -221,7 +222,10 @@ that.onload = () => {
                 if (e.target.className === 'input_password') {
                     if (e.target.value === 'pass') validate.password = true
                 }
-                if (validate.name && validate.password) location = '/owner/index'
+                if (validate.name && validate.password) {
+                    window.sessionStorage.loginKey = 'on'
+                    location = '/owner/index'
+                }
             }
         }
     })
