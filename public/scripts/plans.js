@@ -1,15 +1,28 @@
 const that = this
 
 that.onload = () => {
-    const request = that.indexedDB.open('prototype', 2)
-    request.onupgradeneeded = (e) => {
+    const document = that.document
+    const MainParent = document.getElementsByClassName('shift_image')[0]
+    const showReq = that.indexedDB.open('prototype', 2)
+    showReq.onsuccess = (e) => {
         const db = e.target.result
-        db.createObjectStore('message', { keyPath: 'idStr', autoIncrement: true })
-        db.createObjectStore('shift', { keyPath: 'idStr', autoIncrement: true })
-        db.createObjectStore('image', { keyPath: 'idStr', autoIncrement: true })
+        const request = db.transaction(['image'], 'readonly')
+            .objectStore('image')
+            .getAll()
+        request.onsuccess = (e) => {
+            const result = e.target.result
+            let details = new String()
+            for (let i = 0; i < result.length; i++) {
+                let url = URL.createObjectURL(result[i].img)
+                details += '<div class="imgComponent"><p class="inner_text">' + result[i].date + '</p>'
+                details += '<img src ="' + url + '" /></div>'
+            }
+            MainParent.innerHTML += details
+            runScript()
+        }
     }
     /*  Shift Script  */
-    $(function () {
+    function runScript() {
         const img = $('.imgComponent')
         $('#modal_window_image').find('.close').on('click', function () {
             window_close($('#modal_window_image'), $('#modal_bg'))
@@ -26,9 +39,6 @@ that.onload = () => {
             const top = $(window).height() / 2 - $(modal).height() / 2
             const left = $(window).width() / 2 - $(modal).width() / 2
             $(modal).css({ top: Math.floor(top), left: Math.floor(left) })
-            $(window).on('wheel', function (e) {
-                e.preventDefault()
-            })
             $(modal).fadeIn()
             $(bg).fadeIn()
         }
@@ -38,7 +48,7 @@ that.onload = () => {
             modal.fadeOut()
             $(window).off('wheel')
         }
-    })
+    }
     /*  Footer Script  */
     $(function () {
         const $Footer = $('#footer')

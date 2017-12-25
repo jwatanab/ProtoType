@@ -29,10 +29,13 @@ Header.defaultProps = {
     /*  Custom */
     initial: 'ログイン完了',
     title: '管理者ログイン',
-    home: '/owner/index',
     /*  init  */
     item1: '確定予定表送信',
-    link1: '/owner/prompt'
+    link1: '/owner/prompt',
+    item2: '管理者シフト確認',
+    link2: '/owner/confirm',
+    item3: '管理者メッセージ確認',
+    link3: '/owner/chat'
 }
 
 Footer.defaultProps = {

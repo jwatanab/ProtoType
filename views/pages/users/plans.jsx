@@ -18,13 +18,13 @@ class Flont extends React.Component {
                         </div>
                         <div className="shift_image">
                             <div class="imgComponent">
-                                <p class='inner_text'></p>
+                                <p class='inner_text'>12/24</p>
                                 <img src='/img/24068420_1762809334021436_6727881327246584918_o.jpg' />
                             </div>
                         </div>
                     </div>
                 </div>
-                <script src='/scripts/front.js'></script>
+                <script src='/scripts/plans.js'></script>
                 <Footer />
             </div >
         )
