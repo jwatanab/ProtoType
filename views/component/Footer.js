@@ -3,7 +3,10 @@ const React = require('react')
 class Footer extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            item1: this.props.item1,
+            item2: this.props.item2
+        }
     }
     render() {
         /**
@@ -16,8 +19,12 @@ class Footer extends React.Component {
             <div className='container'>
                 <div id='footer'>
                     <div className='link'>
-                        <h2 className='title owner'>管理者ログイン</h2>
-                        <h2 className='title guide'>利用方法</h2>
+                        <h2 className='title owner'>{(() => {
+                            return this.state.item1 || '管理者ログイン'
+                        })()}</h2>
+                        <h2 className='title guide'>{(() => {
+                            return this.state.item2 || '利用方法'
+                        })()}</h2>
                     </div>
                 </div>
             </div>

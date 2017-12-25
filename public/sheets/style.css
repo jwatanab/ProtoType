@@ -339,3 +339,18 @@ body {
   opacity: 0.8;
   transform: scale(1.2);
 }
+
+.owner_prompt .preview{
+  width: 1170px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.owner_prompt .preview_src{
+  max-height: 560px;
+  max-width: 780px;
+  border-radius: 40px;
+  margin: 0 auto;
+  display: none;
+}

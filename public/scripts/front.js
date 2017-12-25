@@ -85,7 +85,7 @@ that.onload = () => {
                 if (e.target.className === 'input_password') {
                     if (e.target.value === 'pass') validate.password = true
                 }
-                if (validate.name && validate.password) location = '/'
+                if (validate.name && validate.password) location = '/owner/index'
             }
         }
     })

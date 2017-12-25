@@ -1,8 +1,8 @@
 const React = require('react')
-const Header = require('../component/Header')
-const Footer = require('../component/Footer')
+const Header = require('../../component/Header')
+const Footer = require('../../component/Footer')
 
-class Flont extends React.Component {
+class Owner extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -19,7 +19,6 @@ class Flont extends React.Component {
                        Suspendisse ligula turpis, ullamcorper quis aliquet a, congue eget velit. Integer non elementum mi. Duis vel mauris ut urna suscipit facilisis. Nunc eu venenatis elit. Quisque id mollis magna, nec hendrerit justo. Aliquam in sem nec risus ullamcorper tincidunt quis vel orci. Phasellus consequat magna nec tellus commodo, nec egestas ipsum dignissim. Aliquam tempus id dolor ac auctor. Morbi facilisis, metus ac sodales cursus, nibh dui accumsan augue, molestie vulputate velit elit in tellus.
                     </p>
                 </div>
-                <script src='/scripts/init.js'></script>
                 <Footer />
             </div>
         )
@@ -27,17 +26,18 @@ class Flont extends React.Component {
 }
 
 Header.defaultProps = {
-    initial: 'ホーム',
-    home: '/',
-    item1: 'シフト確認画面画面',
-    item2: 'シフト投稿画面',
-    item3: 'チャット画面',
-    item4: '予定表確認画面',
-    link1: '/users/confirm',
-    link2: '/users/prompt',
-    link3: '/users/chat',
-    link4: '/users/plans',
-    title: 'シフト管理'
+    /*  Custom */
+    initial: 'ログイン完了',
+    title: '管理者ログイン',
+    home: '/owner/index',
+    /*  init  */
+    item1: '確定予定表送信',
+    link1: '/owner/prompt'
 }
 
-module.exports = Flont
+Footer.defaultProps = {
+    item1: 'ホームに戻る',
+    item2: '利用方法'
+}
+
+module.exports = Owner

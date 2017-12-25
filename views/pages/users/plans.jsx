@@ -33,6 +33,7 @@ class Flont extends React.Component {
 
 Header.defaultProps = {
     initial: '予定表確認画面',
+    home: '/',
     item1: 'シフト確認画面画面',
     item2: 'シフト投稿画面',
     item3: 'チャット画面',

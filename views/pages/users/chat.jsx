@@ -48,6 +48,7 @@ class Chat extends React.Component {
 
 Header.defaultProps = {
     initial: 'チャット画面',
+    home: '/',
     item1: 'シフト確認画面画面',
     item2: 'シフト投稿画面',
     item3: 'チャット画面',

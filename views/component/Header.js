@@ -7,6 +7,7 @@ class Header extends React.Component {
         /*  init_state  */
         this.state = {
             initial: this.props.initial,
+            home: this.props.home,
             item1: this.props.item1,
             item2: this.props.item2,
             item3: this.props.item3,
@@ -23,7 +24,7 @@ class Header extends React.Component {
         return (
             <html>
                 <head>
-                    <title>Docment</title>
+                    <title>Shift</title>
                     <link rel='stylesheet' href='/sheets/style.css' />
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous" />
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -54,7 +55,7 @@ class Header extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <a href="/" className="main_title">
+                        <a href={this.state.home} className="main_title">
                             <h2>{this.state.title}</h2>
                         </a>
                         <div className="main_menu">

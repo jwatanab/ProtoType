@@ -11,4 +11,5 @@ class Error extends React.Component {
         );
     }
 }
+
 module.exports = Error
