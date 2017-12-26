@@ -22,7 +22,6 @@ class Comfirm extends React.Component {
         const ret = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getDate()
         return ret
     }
-
     render() {
         /*  HTML変数とキーとなる変数と日付変数 */
         let list = [],

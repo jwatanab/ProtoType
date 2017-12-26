@@ -3,6 +3,17 @@ const that = this
 that.onload = () => {
     if (!that.sessionStorage.loginKey) that.location = '/'
     const document = that.document
+    const showReq = indexedDB.open('prototype', 2)
+    showReq.onsuccess = (e) => {
+        const result = e.target.result
+        const request = result.transaction(['message'], 'readonly')
+            .objectStore('message')
+            .getAll()
+        request.onsuccess = (e) => {
+            const result = e.target.result
+            const done = result.map(it => { })
+        }
+    }
 
     $(function () {
         /*  Footer Script  */

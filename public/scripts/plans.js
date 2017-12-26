@@ -42,14 +42,10 @@ that.onload = () => {
             .getAll()
         request.onsuccess = (e) => {
             const result = e.target.result
-            let details = new String()
-            for (let i = 0; i < result.length; i++) {
-                if (result[i].check !== doDate.getFulldate()) return
-                let url = URL.createObjectURL(result[i].img)
-                details += '<div class="imgComponent"><p class="inner_text">' + result[i].date + '</p>'
-                details += '<img src ="' + url + '" /></div>'
-            }
-            MainParent.innerHTML += details
+            result.map(it => {
+                const url = URL.createObjectURL(it.img)
+                MainParent.innerHTML += '<div class="imgComponent"><p class="inner_text">' + it.date + '</p>' + '<img src ="' + url + '" /></div>'
+            })
             runScript()
         }
     }
@@ -107,7 +103,7 @@ that.onload = () => {
         }
 
         function locationGuide(e) {
-            /*  推移  */
+            /*  location  */
             window.location = '/'
         }
 
