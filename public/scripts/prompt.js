@@ -54,17 +54,19 @@ that.onload = () => {
     }
     function doSubmit(e) {
         if (!Obj.name) return false
-        e.target.parentElement.querySelector('textarea').value = ''
         for (let i = 0; i < target.length; i++) {
             if (!target[i].value) {
                 Obj.check = true
                 break
             }
             Obj.ary.push({ name: target[i].name, value: target[i].value })
+            e.target.parentElement.querySelector('textarea').value = ''
+            Obj.check = false
         }
 
         if (Obj.check) {
             alert('未記入の項目があります、確認を行ってください')
+            Obj.ary.length = 0
             return false
         } else {
             alert('シフトの送信に成功しました')
